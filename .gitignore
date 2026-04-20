@@ -1,0 +1,9 @@
+RoonDisplay
+RoonDisplay_arm64
+RoonDisplay_x86_64
+RoonDisplay.app/
+RoonDisplay.dmg
+*.swp
+*.bak
+*.BAK
+*.swift.2*
