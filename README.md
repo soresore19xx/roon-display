@@ -6,15 +6,13 @@ macOS app that displays the [Roon](https://roon.app/) Display page in a dedicate
 
 ## Features
 
-- Wraps `http://<roon-server>:9330/display/` in a WKWebView window
-- Press `F` to toggle full-screen
-- View menu: **Reload** (`⌘R`)
-- **Burn-in prevention**: shows a pure black overlay after configurable idle timeout (default: 300 s)
-  - Identifies the displayed zone by intercepting Roon's own `console.log` output (`display zone callback: <zone_id>`)
-  - Zone ID persisted to UserDefaults — filtering is active immediately on restart, even if the zone is already paused
-  - Activity timer resets only when `zones_seek_changed` events contain the displayed zone's ID; paused zones emit no seek events
-  - Multi-zone safe: seek events from background zones are ignored
-  - Overlay fades in (1.5 s) on idle, fades out (0.5 s) on resume
+A minimal macOS wrapper for Roon's web display — no frills, just the display and burn-in prevention.
+
+- **Burn-in prevention**: black overlay after configurable idle timeout (default: 300 s), with smooth fade in/out
+  - Multi-zone safe: only the displayed zone's activity resets the timer; background zones are ignored
+  - Zone ID persisted across restarts — filtering works immediately even if the zone is already paused
+- Full-screen support (`F` key)
+- Reload (`⌘R`)
 
 ## Requirements
 
