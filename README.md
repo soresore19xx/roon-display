@@ -2,6 +2,8 @@
 
 macOS app that displays the [Roon](https://roon.app/) Display page in a dedicated full-screen window with burn-in prevention.
 
+![RoonDisplay](docs/roon-display-screenshot.png)
+
 ## Features
 
 - Wraps `http://<roon-server>:9330/display/` in a WKWebView window
