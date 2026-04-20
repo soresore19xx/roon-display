@@ -16,7 +16,7 @@ macOS app that displays the [Roon](https://roon.app/) Display page in a dedicate
 
 ## Requirements
 
-- macOS 11+
+- macOS 10.15+ (Intel) / macOS 11+ (Apple Silicon)
 - Xcode Command Line Tools (`xcode-select --install`)
 
 ## Build & Install
