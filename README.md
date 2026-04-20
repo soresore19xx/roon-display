@@ -63,7 +63,7 @@ The injected `monitorJS` script (injected at `atDocumentStart`):
 3. Sends `roonActivity` ping to Swift only when a `zones_seek_changed` message contains the displayed zone's full ID
 4. Sends `roonZoneId` to Swift on zone ID change — persisted to `UserDefaults` for next launch
 
-**Zone ID identification**: Roon's display page outputs `display zone callback: <zone_id>` via `console.log` on load and on zone change. This is the only reliable source in multi-zone environments. Until this fires (e.g. first launch with zone already paused), seek events from any zone reset the timer.
+**Zone ID identification**: Roon's display page outputs `display zone callback: <zone_id>` via `console.log` on load and on zone change. This is the only reliable source in multi-zone environments. The zone ID is persisted across restarts, so filtering is active from the first seek event even if the zone is already paused at startup.
 
 **WKWebView compatibility**: Two workarounds are injected at document start:
 - `visibilityState` / `hidden` overrides — WKWebView may report `hidden`, causing Roon's JS to skip WebSocket initialization
