@@ -42,7 +42,9 @@ Launch the app and open **Preferences…** (`⌘,`):
 | Display URL | `http://192.168.1.100:9330/display/` | **Change to your Roon Server IP** |
 | Idle timeout (s) | `300` | Seconds before burn-in overlay appears |
 
-To find your Roon Server's IP: open Roon → Settings → About.
+**Finding the URL**: open Roon → **Settings** → **Displays** → copy the **Web display URL** shown at the bottom of the page.
+
+![Roon Settings → Displays](docs/roon-displays.png)
 
 Settings are saved to `UserDefaults` and persist across restarts.
 
