@@ -68,4 +68,4 @@ The injected `monitorJS` script runs at `atDocumentStart` and:
 
 **WKWebView compatibility**: Two scripts are injected at document start:
 - `visibilityState` / `hidden` overrides — WKWebView may report `hidden`, causing Roon's JS to skip WebSocket initialization
-- Chrome user agent — ensures Roon serves the standard display page
+- Chrome user agent with hostname suffix (`... RoonDisplay/<hostname>`) — ensures Roon serves the standard display page, and allows multiple instances to be distinguished in Roon Server's connection list

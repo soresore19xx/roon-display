@@ -247,7 +247,15 @@ class AppDelegate: NSObject, NSApplicationDelegate, WKNavigationDelegate, WKScri
 
         webView = WKWebView(frame: window.contentView!.bounds, configuration: config)
         webView.navigationDelegate = self
-        webView.customUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
+        let hostname: String = {
+            let p = Process(); p.launchPath = "/bin/hostname"; p.arguments = ["-s"]
+            let pipe = Pipe(); p.standardOutput = pipe
+            try? p.run(); p.waitUntilExit()
+            let out = String(data: pipe.fileHandleForReading.readDataToEndOfFile(), encoding: .utf8)?
+                .trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+            return out.isEmpty ? (Host.current().localizedName ?? "unknown") : out
+        }()
+        webView.customUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 RoonDisplay/\(hostname)"
         if #available(macOS 13.3, *) { webView.isInspectable = true }
         webView.autoresizingMask = [.width, .height]
         window.contentView?.addSubview(webView)

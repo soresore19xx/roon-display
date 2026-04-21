@@ -12,7 +12,9 @@ rm RoonDisplay_arm64 RoonDisplay_x86_64
 
 APP=RoonDisplay.app
 mkdir -p "${APP}/Contents/MacOS"
+mkdir -p "${APP}/Contents/Resources"
 cp RoonDisplay "${APP}/Contents/MacOS/"
+[ -f RoonDisplay.icns ] && cp RoonDisplay.icns "${APP}/Contents/Resources/"
 
 cat > "${APP}/Contents/Info.plist" << 'PLIST'
 <?xml version="1.0" encoding="UTF-8"?>
@@ -35,6 +37,8 @@ cat > "${APP}/Contents/Info.plist" << 'PLIST'
     <true/>
     <key>NSPrincipalClass</key>
     <string>NSApplication</string>
+    <key>CFBundleIconFile</key>
+    <string>RoonDisplay</string>
     <key>NSAppTransportSecurity</key>
     <dict>
         <key>NSAllowsArbitraryLoads</key>
